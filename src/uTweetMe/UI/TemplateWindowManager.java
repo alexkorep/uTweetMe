@@ -154,7 +154,7 @@ public class TemplateWindowManager implements CommandListener {
     */
    private TextBox getTxtboxTemplate() {
       if (m_txtBoxTemplate == null) {
-         m_txtBoxTemplate = new TextBox("New Template", null, 140,
+         m_txtBoxTemplate = new TextBox("New Template", null, 4000,
             TextField.ANY | TextField.INITIAL_CAPS_SENTENCE);
          m_txtBoxTemplate.addCommand(m_cmdOk);
          m_txtBoxTemplate.addCommand(m_cmdBack);

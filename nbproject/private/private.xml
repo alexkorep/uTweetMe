@@ -6,17 +6,18 @@
             <line>308</line>
         </file>
         <file>
+            <url>src/uTweetMe/UI/TemplateWindowManager.java</url>
+            <line>131</line>
+        </file>
+        <file>
             <url>src/uTweetMe/uTweetMeApp.java</url>
             <line>44</line>
             <line>48</line>
         </file>
         <file>
-            <url>src/uTweetMe/UI/TemplateWindowManager.java</url>
-            <line>131</line>
-        </file>
-        <file>
             <url>src/uTweetMe/UTweetMIDlet.java</url>
-            <line>2692</line>
+            <line>515</line>
+            <line>2701</line>
         </file>
         <file>
             <url>src/uTweeMe/UTweeMIDlet.java</url>

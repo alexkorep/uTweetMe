@@ -74,6 +74,14 @@ public class UTweetMIDlet extends MIDlet
     ///@brief Position of the first search timeline in the timieline list
     private static final int c_firstSearchTimelinePos = 4;
 
+	 private static final String c_longTweetWarning =
+		"\n----\n" +
+		"Warning: your tweet length is #chars# characters which exceeds 140 character " +
+		"limit. First 140 characters will be posted to Twitter with the link to the " +
+		"full text posted to TwiGu.ru service. Please note that full text at TwiGu.ru " +
+		"might be visible to everyone even if you posted a direct message or " +
+		"protected your updates on Twitter. Continue?";
+
 	 //<editor-fold defaultstate="collapsed" desc=" Generated Fields ">//GEN-BEGIN:|fields|0|
 	 private Command backCommand;
 	 private Command cmdPost;
@@ -503,7 +511,8 @@ public class UTweetMIDlet extends MIDlet
                     // Empty update string, do nothing here.
                     return;
                 }
-                getFrmPreviewText().setText(getTxtboxUpdate().getString());
+					 final String previewText = getPreviewText(getTxtboxUpdate().getString());
+                getFrmPreviewText().setText(previewText);
 					 switchDisplayable(null, getFrmPreview());//GEN-LINE:|7-commandAction|82|223-postAction
                 // write post-action user code here
 			} else if (command == cmdSaveAsTemplate) {//GEN-LINE:|7-commandAction|83|393-preAction
@@ -545,7 +554,7 @@ public class UTweetMIDlet extends MIDlet
 	public TextBox getTxtboxUpdate() {
 		if (txtboxUpdate == null) {//GEN-END:|27-getter|0|27-preInit
             // write pre-init user code here
-			txtboxUpdate = new TextBox("What are you doing?", null, 2000, TextField.ANY | TextField.INITIAL_CAPS_SENTENCE);//GEN-BEGIN:|27-getter|1|27-postInit
+			txtboxUpdate = new TextBox("What are you doing?", null, 4000, TextField.ANY | TextField.INITIAL_CAPS_SENTENCE);//GEN-BEGIN:|27-getter|1|27-postInit
 			txtboxUpdate.addCommand(getCmdOK());
 			txtboxUpdate.addCommand(getCmdBack());
 			txtboxUpdate.addCommand(getCmdTemplates());
@@ -2002,7 +2011,7 @@ public class UTweetMIDlet extends MIDlet
       //
       final int draftItemCount = m_app.GetDrafts().GetItemCount();
       final String titleText = c_draftsListDisplayableTitle +
-         (draftItemCount > 0 ? "(" + draftItemCount + ")" : "");
+         (draftItemCount > 0 ? " (" + draftItemCount + ")" : "");
       getListDrafts().setTitle(titleText);
 
       if (!updateListItems) {
@@ -2025,7 +2034,7 @@ public class UTweetMIDlet extends MIDlet
     */
    private void updateDraftsMainWindowItem() {
       final int draftItemCount = m_app.GetDrafts().GetItemCount();
-      final String titleText = c_draftsListDisplayableTitle + (draftItemCount > 0 ? "(" + draftItemCount + ")" : "");
+      final String titleText = c_draftsListDisplayableTitle + (draftItemCount > 0 ? " (" + draftItemCount + ")" : "");
       //getListUpdates().setTitle(titleText);
       ListSelectionKeeper keeper = new ListSelectionKeeper(getListMainForm());
       setTextAndIcon(getListMainForm(), c_DraftsItemPos, titleText, imgDrafts);
@@ -2075,7 +2084,7 @@ public class UTweetMIDlet extends MIDlet
     */
    private void updateOutboxMainWindowItem() {
       final int itemCount = m_app.GetOutbox().GetItemCount();
-      String text = c_outboxListDisplayableTitle + (itemCount > 0 ? "(" + itemCount + ")" : "");
+      String text = c_outboxListDisplayableTitle + (itemCount > 0 ? " (" + itemCount + ")" : "");
       ListSelectionKeeper keeper = new ListSelectionKeeper(getListMainForm());
       setTextAndIcon(getListMainForm(), c_OutboxItemPos, text, imgOutbox);
       keeper.Restore();
@@ -2096,7 +2105,7 @@ public class UTweetMIDlet extends MIDlet
       // Settint displayable title
       //
       final int itemCount = m_app.GetOutbox().GetItemCount();
-      String titleText = c_outboxListDisplayableTitle + (itemCount > 0 ? "(" + itemCount + ")" : "");
+      String titleText = c_outboxListDisplayableTitle + (itemCount > 0 ? " (" + itemCount + ")" : "");
       getListOutbox().setTitle(titleText);
 
       // Filling displayable list
@@ -2568,8 +2577,8 @@ public class UTweetMIDlet extends MIDlet
 
       // author + text because we have " " in the beginning of text already
       String retweetText = "RT @" + author + text;
-      if (retweetText.length() > 140) {
-         retweetText = retweetText.substring(0, 140);
+      if (retweetText.length() > TwitterUpdate.m_maxLongTweetTextLen) {
+         retweetText = retweetText.substring(0, TwitterUpdate.m_maxLongTweetTextLen);
       }
 
       getTxtboxUpdate().setString(retweetText);
@@ -2709,4 +2718,35 @@ public class UTweetMIDlet extends MIDlet
       }
       switchDisplayable(alert, getFrmTweetDetails());
    }
+
+	/**
+	 * @brief Creates text to show as a privew for tweet posting.
+	 *		If Tweet is longer than 140 characters, displays warning
+	 *		that it will be posted via TwiGu.ru service.
+	 * @param i_textAboutToTweet - tweet text
+	 * @return Text for preview
+	 */
+	private String getPreviewText(String i_textAboutToTweet) {
+		final int tweetLength = i_textAboutToTweet.length();
+		if (tweetLength <= TwitterUpdate.m_maxUpdateTextLen) {
+			return i_textAboutToTweet;
+		}
+		final String msg = replace("#chars#", Integer.toString(tweetLength),
+			c_longTweetWarning);
+		return i_textAboutToTweet + msg;
+	}
+
+	private String replace(String needle, String replacement, String haystack) {
+		String result = "";
+		int index = haystack.indexOf(needle);
+		if (index == 0) {
+			result = replacement + haystack.substring(needle.length());
+			return replace(needle, replacement, result);
+		} else if (index > 0) {
+			result = haystack.substring(0, index) + replacement + haystack.substring(index + needle.length());
+			return replace(needle, replacement, result);
+		} else {
+			return haystack;
+		}
+	}
 }

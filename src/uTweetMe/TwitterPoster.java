@@ -75,17 +75,18 @@ public class TwitterPoster implements Runnable {
    private void postUpdate() {
       TwitterUpdate update = TwitterUpdate.CreateNew(m_updateText, m_replyToId);
       m_callback.TWASC_OnUpdateStarted(update);
-
-		if (update.m_text.length() > TwitterUpdate.m_maxUpdateTextLen)
-		{
-			final String newText = ShortenPoster.Post(update);
-			update.m_text = newText;
-		}
+		final String originalText = update.m_text;
 
       try {
+			if (update.m_text.length() > TwitterUpdate.m_maxUpdateTextLen)
+			{
+				final String shortenText = ShortenPoster.Post(update);
+				update.m_text = shortenText;
+			}
+
          String query = "source=utweetme" +
             (0 != m_replyToId ? "&in_reply_to_status_id=" + String.valueOf(m_replyToId) : "") +
-            "&status=" + HttpUtils.URLEncode(m_updateText);
+            "&status=" + HttpUtils.URLEncode(update.m_text);
          HttpUtils.Request(c_updateURL, query, HttpConnection.POST, m_username, m_password, null);
 
          // Reporting about success
@@ -93,6 +94,10 @@ public class TwitterPoster implements Runnable {
          m_callback.TWASC_OnUpdatePosted(update);
       } catch (Exception ex) {
          ex.printStackTrace();
+
+			// If we didn't manage to post the update, then its text should be
+			// returned to original state, not shorten one.
+			update.m_text = originalText;
 
          // Reporting about error
          //

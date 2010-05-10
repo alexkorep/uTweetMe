@@ -13,7 +13,11 @@ import java.io.IOException;
  * @author Alexey
  */
 public class TwitterUpdate {
+	/// @brief max tweet length
 	public static final int m_maxUpdateTextLen = 140;
+	
+	/// @brief max message posted to TwiGu.ru length
+	public static final int m_maxLongTweetTextLen = 4000;
 	public String m_text;      ///< update text
    public String m_author;    ///< update author
    public long m_id;          ///< unique ID of update

@@ -253,7 +253,7 @@ public class HttpUtils
                     break;
                 case 100:
                     throw new IOException("unexpected 100 Continue");
-                    default:
+                default:
                     con.close();
                     con = null;
                     //Log.verbose("closed connection");
