@@ -17,7 +17,8 @@ public class DownloadableSearchCollection extends DownloadableCollection {
          String i_url,
          DownloadableCollectionStatusCallback i_downloadCallback,
          TimelineParsingStrategy i_parsingStrategy) {
-      super(i_name, i_url, i_downloadCallback, i_parsingStrategy);
+      super(i_name, i_url, i_downloadCallback, i_parsingStrategy, 
+              true); // true because it's a public timeline
    }
 
    public void DSC_OnNewTimelineItem(String i_id, String i_text, String i_author,

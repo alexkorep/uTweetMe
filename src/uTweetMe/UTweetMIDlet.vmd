@@ -59,10 +59,10 @@
                         </Component>
                     </Component>
                     <Component componentID="65" typeID="C#IfFalseEventSource">
-                        <Property name="eventHandler" typeID="C#EventHandler" value="R77"/>
-                        <Component componentID="77" typeID="C#SwitchDisplayableEventHandler">
+                        <Property name="eventHandler" typeID="C#EventHandler" value="R399"/>
+                        <Component componentID="399" typeID="C#CallPointEventHandler">
                             <Property name="eventSource" typeID="C#EventSource" value="R65"/>
-                            <Property name="displayable" typeID="Cjavax.microedition.lcdui.Displayable" value="R51"/>
+                            <Property name="callPoint" typeID="C#CallPoint" value="R309"/>
                         </Component>
                     </Component>
                 </Component>
@@ -81,61 +81,72 @@
             <Component componentID="8" typeID="C#CommandsCategory">
                 <Component componentID="287" typeID="Cjavax.microedition.lcdui.Command">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VbackCommand"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="label" typeID="Pjava.lang.String" value="VBack"/>
                     <Property name="type" typeID="Pint" value="V2"/>
                     <Property name="priority" typeID="Pint" value="V1"/>
                 </Component>
                 <Component componentID="28" typeID="Cjavax.microedition.lcdui.Command">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VcmdPost"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="label" typeID="Pjava.lang.String" value="VPost"/>
                     <Property name="type" typeID="Pint" value="V4"/>
                     <Property name="priority" typeID="Pint" value="V0"/>
                 </Component>
                 <Component componentID="305" typeID="Cjavax.microedition.lcdui.Command">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VcmdReply"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="label" typeID="Pjava.lang.String" value="VReply"/>
                     <Property name="type" typeID="Pint" value="V1"/>
                     <Property name="priority" typeID="Pint" value="V0"/>
                 </Component>
                 <Component componentID="307" typeID="Cjavax.microedition.lcdui.Command">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VcmdDirectMessage"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="label" typeID="Pjava.lang.String" value="VDirect Message"/>
                     <Property name="type" typeID="Pint" value="V1"/>
                 </Component>
                 <Component componentID="43" typeID="Cjavax.microedition.lcdui.Command">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VcmdBackExit"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="label" typeID="Pjava.lang.String" value="VExit"/>
                     <Property name="type" typeID="Pint" value="V2"/>
                 </Component>
                 <Component componentID="55" typeID="Cjavax.microedition.lcdui.Command">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VcmdOK"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="label" typeID="Pjava.lang.String" value="VOK"/>
                     <Property name="type" typeID="Pint" value="V4"/>
                     <Property name="priority" typeID="Pint" value="V0"/>
                 </Component>
                 <Component componentID="294" typeID="Cjavax.microedition.lcdui.Command">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VcmdReceive"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="label" typeID="Pjava.lang.String" value="VReceive"/>
                     <Property name="type" typeID="Pint" value="V8"/>
                 </Component>
                 <Component componentID="342" typeID="Cjavax.microedition.lcdui.Command">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VcmdMarkTweetUnread"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="label" typeID="Pjava.lang.String" value="VMark Unread"/>
                     <Property name="type" typeID="Pint" value="V8"/>
                 </Component>
                 <Component componentID="339" typeID="Cjavax.microedition.lcdui.Command">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VitemCommand"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="label" typeID="Pjava.lang.String" value="VItem"/>
                     <Property name="type" typeID="Pint" value="V8"/>
                 </Component>
                 <Component componentID="337" typeID="Cjavax.microedition.lcdui.Command">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VcmdMarkAllUnread"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="label" typeID="Pjava.lang.String" value="VMark All Unread"/>
                     <Property name="type" typeID="Pint" value="V8"/>
                     <Property name="priority" typeID="Pint" value="V3"/>
                 </Component>
                 <Component componentID="344" typeID="Cjavax.microedition.lcdui.Command">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VcmdReceiveAll"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="label" typeID="Pjava.lang.String" value="VReceive All"/>
                     <Property name="type" typeID="Pint" value="V8"/>
                 </Component>
@@ -147,17 +158,20 @@
                 </Component>
                 <Component componentID="335" typeID="Cjavax.microedition.lcdui.Command">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VcmdMarkAllRead"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="label" typeID="Pjava.lang.String" value="VMark All Read"/>
                     <Property name="type" typeID="Pint" value="V8"/>
                     <Property name="priority" typeID="Pint" value="V2"/>
                 </Component>
                 <Component componentID="375" typeID="Cjavax.microedition.lcdui.Command">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VcmdDeleteSearch"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="label" typeID="Pjava.lang.String" value="VDelete Search"/>
                     <Property name="type" typeID="Pint" value="V1"/>
                 </Component>
                 <Component componentID="371" typeID="Cjavax.microedition.lcdui.Command">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VokCommand"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="label" typeID="Pjava.lang.String" value="VOk"/>
                     <Property name="type" typeID="Pint" value="V4"/>
                 </Component>
@@ -175,63 +189,75 @@
                 </Component>
                 <Component componentID="377" typeID="Cjavax.microedition.lcdui.Command">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VcmdClearCache"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="label" typeID="Pjava.lang.String" value="VClear cache"/>
                     <Property name="type" typeID="Pint" value="V1"/>
                 </Component>
                 <Component componentID="359" typeID="Cjavax.microedition.lcdui.Command">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VstopCommand"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="label" typeID="Pjava.lang.String" value="VStop"/>
                     <Property name="type" typeID="Pint" value="V6"/>
                 </Component>
                 <Component componentID="352" typeID="Cjavax.microedition.lcdui.Command">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VcmdShowReply"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="label" typeID="Pjava.lang.String" value="VItem"/>
                     <Property name="type" typeID="Pint" value="V8"/>
                 </Component>
                 <Component componentID="366" typeID="Cjavax.microedition.lcdui.Command">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VcmdAddSearch"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="label" typeID="Pjava.lang.String" value="VNew Search"/>
                     <Property name="type" typeID="Pint" value="V1"/>
                 </Component>
                 <Component componentID="361" typeID="Cjavax.microedition.lcdui.Command">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VcmdCancelDownloading"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="label" typeID="Pjava.lang.String" value="VCancel"/>
                     <Property name="type" typeID="Pint" value="V3"/>
                 </Component>
                 <Component componentID="134" typeID="Cjavax.microedition.lcdui.Command">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VcmdBack"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="label" typeID="Pjava.lang.String" value="VBack"/>
                     <Property name="type" typeID="Pint" value="V2"/>
                     <Property name="priority" typeID="Pint" value="V0"/>
                 </Component>
                 <Component componentID="395" typeID="Cjavax.microedition.lcdui.Command">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VcmdRetweet"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="label" typeID="Pjava.lang.String" value="VRetweet"/>
                     <Property name="type" typeID="Pint" value="V8"/>
                 </Component>
                 <Component componentID="392" typeID="Cjavax.microedition.lcdui.Command">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VcmdSaveAsTemplate"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="label" typeID="Pjava.lang.String" value="VSave as Template"/>
                     <Property name="type" typeID="Pint" value="V8"/>
                 </Component>
                 <Component componentID="158" typeID="Cjavax.microedition.lcdui.Command">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VcmdDeleteItem"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="label" typeID="Pjava.lang.String" value="VDelete"/>
                     <Property name="type" typeID="Pint" value="V3"/>
                     <Property name="priority" typeID="Pint" value="V1"/>
                 </Component>
                 <Component componentID="397" typeID="Cjavax.microedition.lcdui.Command">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VcmdDeleteTweet"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="label" typeID="Pjava.lang.String" value="VDelete tweet"/>
                     <Property name="type" typeID="Pint" value="V8"/>
                 </Component>
                 <Component componentID="390" typeID="Cjavax.microedition.lcdui.Command">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VcmdOpenUrls"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="label" typeID="Pjava.lang.String" value="VOpen URLs"/>
                     <Property name="type" typeID="Pint" value="V8"/>
                 </Component>
                 <Component componentID="388" typeID="Cjavax.microedition.lcdui.Command">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VcmdTemplates"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="label" typeID="Pjava.lang.String" value="VTemplates"/>
                     <Property name="type" typeID="Pint" value="V8"/>
                     <Property name="priority" typeID="Pint" value="V0"/>
@@ -244,29 +270,40 @@
                 </Component>
                 <Component componentID="162" typeID="Cjavax.microedition.lcdui.Command">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VcmdEditItem"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="label" typeID="Pjava.lang.String" value="VEdit"/>
                     <Property name="type" typeID="Pint" value="V8"/>
                     <Property name="priority" typeID="Pint" value="V0"/>
                 </Component>
                 <Component componentID="205" typeID="Cjavax.microedition.lcdui.Command">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VcmdNo"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="label" typeID="Pjava.lang.String" value="VNo"/>
                     <Property name="type" typeID="Pint" value="V3"/>
                 </Component>
                 <Component componentID="203" typeID="Cjavax.microedition.lcdui.Command">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VcmdYes"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="label" typeID="Pjava.lang.String" value="VYes"/>
                     <Property name="type" typeID="Pint" value="V4"/>
                 </Component>
                 <Component componentID="226" typeID="Cjavax.microedition.lcdui.Command">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VcmdBackClose"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="label" typeID="Pjava.lang.String" value="VClose"/>
                     <Property name="type" typeID="Pint" value="V2"/>
+                </Component>
+                <Component componentID="400" typeID="Cjavax.microedition.lcdui.Command">
+                    <Property name="instanceName" typeID="Pjava.lang.String" value="VcmdUsernamePassword"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
+                    <Property name="label" typeID="Pjava.lang.String" value="VItem"/>
+                    <Property name="type" typeID="Pint" value="V8"/>
                 </Component>
             </Component>
             <Component componentID="10" typeID="C#DisplayablesCategory">
                 <Component componentID="275" typeID="Cjavax.microedition.lcdui.List">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VlistTimeline"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="commands" typeID="1C#CommandEventSource" value="A6:4_R2764_R2954_R2884_R3364_R3384_R378"/>
                     <Property name="title" typeID="Pjava.lang.String" value="VHome"/>
                     <Property name="commandListener" typeID="C#CommandListener" value="R7"/>
@@ -309,6 +346,7 @@
                 </Component>
                 <Component componentID="263" typeID="Cjavax.microedition.lcdui.Form">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VfrmSaveToDraftsConfirm"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="commands" typeID="1C#CommandEventSource" value="A2:4_R2654_R266"/>
                     <Property name="title" typeID="Pjava.lang.String" value="VConfirm"/>
                     <Property name="commandListener" typeID="C#CommandListener" value="R7"/>
@@ -324,6 +362,7 @@
                     </Component>
                     <Component componentID="264" typeID="Cjavax.microedition.lcdui.StringItem">
                         <Property name="instanceName" typeID="Pjava.lang.String" value="VstringItem"/>
+                        <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                         <Property name="label" typeID="Pjava.lang.String" value="V"/>
                         <Property name="itemCommandListener" typeID="C#ItemCommandListener" value="R17"/>
                         <Property name="text" typeID="Pjava.lang.String" value="VSave update in Drafts?"/>
@@ -340,6 +379,7 @@
                 </Component>
                 <Component componentID="27" typeID="Cjavax.microedition.lcdui.TextBox">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VtxtboxUpdate"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="commands" typeID="1C#CommandEventSource" value="A4:4_R2234_R1374_R3894_R393"/>
                     <Property name="title" typeID="Pjava.lang.String" value="VWhat are you doing?"/>
                     <Property name="commandListener" typeID="C#CommandListener" value="R7"/>
@@ -374,6 +414,7 @@
                 </Component>
                 <Component componentID="317" typeID="Cjavax.microedition.lcdui.List">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VlistTimelines"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="commands" typeID="1C#CommandEventSource" value="A5:4_R3184_R3254_R3454_R3674_R376"/>
                     <Property name="title" typeID="Pjava.lang.String" value="VTimelines"/>
                     <Property name="commandListener" typeID="C#CommandListener" value="R7"/>
@@ -424,12 +465,14 @@
                 </Component>
                 <Component componentID="51" typeID="Cjavax.microedition.lcdui.Form">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VfrmConfig"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="commands" typeID="1C#CommandEventSource" value="A1:4_R227"/>
                     <Property name="title" typeID="Pjava.lang.String" value="VConfig"/>
                     <Property name="commandListener" typeID="C#CommandListener" value="R7"/>
                     <Property name="items" typeID="1Cjavax.microedition.lcdui.Item" value="A3:3_R533_R544_R346"/>
                     <Component componentID="54" typeID="Cjavax.microedition.lcdui.TextField">
                         <Property name="instanceName" typeID="Pjava.lang.String" value="VfrmConfigTxtPassword"/>
+                        <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                         <Property name="label" typeID="Pjava.lang.String" value="VPassword"/>
                         <Property name="itemCommandListener" typeID="C#ItemCommandListener" value="R17"/>
                         <Property name="maxSize" typeID="Pint" value="V32"/>
@@ -437,6 +480,7 @@
                     </Component>
                     <Component componentID="53" typeID="Cjavax.microedition.lcdui.TextField">
                         <Property name="instanceName" typeID="Pjava.lang.String" value="VfrmConfigTxtUserName"/>
+                        <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                         <Property name="label" typeID="Pjava.lang.String" value="VUser name"/>
                         <Property name="itemCommandListener" typeID="C#ItemCommandListener" value="R17"/>
                         <Property name="maxSize" typeID="Pint" value="V32"/>
@@ -445,6 +489,7 @@
                     </Component>
                     <Component componentID="346" typeID="Cjavax.microedition.lcdui.ChoiceGroup">
                         <Property name="instanceName" typeID="Pjava.lang.String" value="VfrmConfigOnStartGroup"/>
+                        <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                         <Property name="label" typeID="Pjava.lang.String" value="VOn Start"/>
                         <Property name="itemCommandListener" typeID="C#ItemCommandListener" value="R17"/>
                         <Property name="elements" typeID="1C#ChoiceElement" value="A2:4_R3474_R348"/>
@@ -467,6 +512,7 @@
                 </Component>
                 <Component componentID="297" typeID="Cjavax.microedition.lcdui.Form">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VfrmTweetDetails"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="commands" typeID="1C#CommandEventSource" value="A8:4_R3024_R3134_R3144_R3964_R3434_R3914_R3944_R398"/>
                     <Property name="title" typeID="Pjava.lang.String" value="VTweet Details"/>
                     <Property name="commandListener" typeID="C#CommandListener" value="R7"/>
@@ -499,6 +545,7 @@
                     </Component>
                     <Component componentID="351" typeID="Cjavax.microedition.lcdui.StringItem">
                         <Property name="instanceName" typeID="Pjava.lang.String" value="VtxtInReplyTo"/>
+                        <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                         <Property name="label" typeID="Pjava.lang.String" value="VIn Reply To"/>
                         <Property name="commands" typeID="1C#ItemCommandEventSource" value="A1:4_R354"/>
                         <Property name="defaultCommand" typeID="C#ItemCommandEventSource" value="R354"/>
@@ -516,6 +563,7 @@
                     </Component>
                     <Component componentID="328" typeID="Cjavax.microedition.lcdui.StringItem">
                         <Property name="instanceName" typeID="Pjava.lang.String" value="VtxtTweetDetailsText"/>
+                        <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                         <Property name="label" typeID="Pjava.lang.String" value="Vauthor "/>
                         <Property name="commands" typeID="1C#ItemCommandEventSource" value="A0:"/>
                         <Property name="itemCommandListener" typeID="C#ItemCommandListener" value="R17"/>
@@ -540,6 +588,7 @@
                 </Component>
                 <Component componentID="82" typeID="Cjavax.microedition.lcdui.List">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VlistOutbox"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="commands" typeID="1C#CommandEventSource" value="A2:3_R844_R135"/>
                     <Property name="title" typeID="Pjava.lang.String" value="VUpdate List"/>
                     <Property name="commandListener" typeID="C#CommandListener" value="R7"/>
@@ -564,6 +613,7 @@
                 </Component>
                 <Component componentID="382" typeID="Cjavax.microedition.lcdui.Alert">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="ValertSaveSearchConfirm"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="commands" typeID="1C#CommandEventSource" value="A2:4_R3834_R384"/>
                     <Property name="title" typeID="Pjava.lang.String" value="VConfirmation"/>
                     <Property name="commandListener" typeID="C#CommandListener" value="R7"/>
@@ -581,6 +631,7 @@
                 </Component>
                 <Component componentID="357" typeID="Cjavax.microedition.lcdui.Form">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VfrmDownloadProgress"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="commands" typeID="1C#CommandEventSource" value="A2:4_R3584_R362"/>
                     <Property name="title" typeID="Pjava.lang.String" value="VDownloading"/>
                     <Property name="commandListener" typeID="C#CommandListener" value="R7"/>
@@ -591,6 +642,7 @@
                     </Component>
                     <Component componentID="364" typeID="Cjavax.microedition.lcdui.Gauge">
                         <Property name="instanceName" typeID="Pjava.lang.String" value="VfrmDownloadProgressBar"/>
+                        <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                         <Property name="label" typeID="Pjava.lang.String" value="VConnecting to server"/>
                         <Property name="layout" typeID="Pint" value="V51"/>
                         <Property name="itemCommandListener" typeID="C#ItemCommandListener" value="R17"/>
@@ -609,6 +661,7 @@
                 </Component>
                 <Component componentID="365" typeID="Cjavax.microedition.lcdui.TextBox">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VtxtboxSearch"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="commands" typeID="1C#CommandEventSource" value="A2:4_R3704_R372"/>
                     <Property name="title" typeID="Pjava.lang.String" value="VSearch"/>
                     <Property name="commandListener" typeID="C#CommandListener" value="R7"/>
@@ -629,6 +682,7 @@
                 </Component>
                 <Component componentID="120" typeID="Cjavax.microedition.lcdui.List">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VlistMainForm"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="commands" typeID="1C#CommandEventSource" value="A2:4_R1214_R128"/>
                     <Property name="title" typeID="Pjava.lang.String" value="VuTweetMe"/>
                     <Property name="commandListener" typeID="C#CommandListener" value="R7"/>
@@ -712,6 +766,7 @@
                 </Component>
                 <Component componentID="142" typeID="Cjavax.microedition.lcdui.Alert">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="ValertError"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="title" typeID="Pjava.lang.String" value="VError"/>
                     <Property name="commandListener" typeID="C#CommandListener" value="R7"/>
                     <Property name="timeout" typeID="Pint" value="V-2"/>
@@ -719,6 +774,7 @@
                 </Component>
                 <Component componentID="153" typeID="Cjavax.microedition.lcdui.List">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VlistDrafts"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="commands" typeID="1C#CommandEventSource" value="A4:4_R1544_R1674_R1564_R159"/>
                     <Property name="title" typeID="Pjava.lang.String" value="VDrafts"/>
                     <Property name="commandListener" typeID="C#CommandListener" value="R7"/>
@@ -762,6 +818,7 @@
                 </Component>
                 <Component componentID="233" typeID="Cjavax.microedition.lcdui.Form">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VfrmPreview"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="commands" typeID="1C#CommandEventSource" value="A2:4_R2374_R261"/>
                     <Property name="title" typeID="Pjava.lang.String" value="VPreview"/>
                     <Property name="commandListener" typeID="C#CommandListener" value="R7"/>
@@ -786,6 +843,7 @@
                     </Component>
                     <Component componentID="234" typeID="Cjavax.microedition.lcdui.StringItem">
                         <Property name="instanceName" typeID="Pjava.lang.String" value="VfrmPreviewText"/>
+                        <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                         <Property name="label" typeID="Pjava.lang.String" value="V"/>
                         <Property name="itemCommandListener" typeID="C#ItemCommandListener" value="R17"/>
                         <Property name="text" typeID="Pjava.lang.String" value="V"/>
@@ -794,12 +852,14 @@
                 </Component>
                 <Component componentID="245" typeID="Cjavax.microedition.lcdui.Form">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VfrmReadme"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="commands" typeID="1C#CommandEventSource" value="A1:4_R248"/>
                     <Property name="title" typeID="Pjava.lang.String" value="VReadme"/>
                     <Property name="commandListener" typeID="C#CommandListener" value="R7"/>
                     <Property name="items" typeID="1Cjavax.microedition.lcdui.Item" value="A1:4_R250"/>
                     <Component componentID="250" typeID="Cjavax.microedition.lcdui.StringItem">
                         <Property name="instanceName" typeID="Pjava.lang.String" value="VfrmReadmeText"/>
+                        <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                         <Property name="label" typeID="Pjava.lang.String" value="V"/>
                         <Property name="layout" typeID="Pint" value="V12288"/>
                         <Property name="itemCommandListener" typeID="C#ItemCommandListener" value="R17"/>
@@ -819,62 +879,76 @@
             <Component componentID="13" typeID="C#ResourcesCategory">
                 <Component componentID="283" typeID="Cjavax.microedition.lcdui.Image">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VimgDirect"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="resourcePath" typeID="Pjava.lang.String" value="V/direct.png"/>
                 </Component>
                 <Component componentID="280" typeID="Cjavax.microedition.lcdui.Image">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VimgFriends"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="resourcePath" typeID="Pjava.lang.String" value="V/friends.png"/>
                 </Component>
                 <Component componentID="284" typeID="Cjavax.microedition.lcdui.Image">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VimgReplies"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="resourcePath" typeID="Pjava.lang.String" value="V/replies.png"/>
                 </Component>
                 <Component componentID="304" typeID="Cjavax.microedition.lcdui.Image">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VimgDirectOutbox"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="resourcePath" typeID="Pjava.lang.String" value="V/direct_outbox.png"/>
                 </Component>
                 <Component componentID="296" typeID="Cjavax.microedition.lcdui.Ticker">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="Vticker"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                 </Component>
                 <Component componentID="350" typeID="Cjavax.microedition.lcdui.Image">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VimgDownload"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="resourcePath" typeID="Pjava.lang.String" value="V/download.png"/>
                 </Component>
                 <Component componentID="334" typeID="Cjavax.microedition.lcdui.Image">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VimgTweetRead"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="resourcePath" typeID="Pjava.lang.String" value="V/tweet_read.png"/>
                 </Component>
                 <Component componentID="333" typeID="Cjavax.microedition.lcdui.Image">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VimgTweet"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="resourcePath" typeID="Pjava.lang.String" value="V/tweet.png"/>
                 </Component>
                 <Component componentID="368" typeID="Cjavax.microedition.lcdui.Image">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VimgSearch"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="resourcePath" typeID="Pjava.lang.String" value="V/search.png"/>
                 </Component>
                 <Component componentID="232" typeID="Cjavax.microedition.lcdui.Image">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VimgSettings"/>
                     <Property name="lazyInit" typeID="Pboolean" value="Vfalse"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="resourcePath" typeID="Pjava.lang.String" value="V/settings.PNG"/>
                 </Component>
                 <Component componentID="231" typeID="Cjavax.microedition.lcdui.Image">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VimgDrafts"/>
                     <Property name="lazyInit" typeID="Pboolean" value="Vfalse"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="resourcePath" typeID="Pjava.lang.String" value="V/drafts.PNG"/>
                 </Component>
                 <Component componentID="230" typeID="Cjavax.microedition.lcdui.Image">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VimgOutbox"/>
                     <Property name="lazyInit" typeID="Pboolean" value="Vfalse"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="resourcePath" typeID="Pjava.lang.String" value="V/outbox.PNG"/>
                 </Component>
                 <Component componentID="229" typeID="Cjavax.microedition.lcdui.Image">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VimgNewUpdate"/>
                     <Property name="lazyInit" typeID="Pboolean" value="Vfalse"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="resourcePath" typeID="Pjava.lang.String" value="V/newupdate.PNG"/>
                 </Component>
                 <Component componentID="244" typeID="Cjavax.microedition.lcdui.Image">
                     <Property name="instanceName" typeID="Pjava.lang.String" value="VimgReadme"/>
                     <Property name="lazyInit" typeID="Pboolean" value="Vfalse"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
                     <Property name="resourcePath" typeID="Pjava.lang.String" value="V/readme.png"/>
                 </Component>
             </Component>
@@ -882,26 +956,27 @@
         </Component>
     </Document>
     <FlowScene version="1">
-        <Node componentID="297" descriptorID="componentNode297" x="-353" y="549"/>
+        <Node componentID="309" descriptorID="componentNode309" x="-476" y="485"/>
         <Node componentID="263" descriptorID="componentNode263" x="578" y="333"/>
-        <Node componentID="365" descriptorID="componentNode365" x="-616" y="85"/>
-        <Node componentID="317" descriptorID="componentNode317" x="-404" y="39"/>
         <Node componentID="153" descriptorID="componentNode153" x="308" y="495"/>
         <Node componentID="233" descriptorID="componentNode233" x="714" y="43"/>
-        <Node componentID="82" descriptorID="componentNode82" x="135" y="574"/>
+        <Node componentID="142" descriptorID="componentNode142" x="685" y="444"/>
+        <Node componentID="27" descriptorID="componentNode27" x="422" y="119"/>
+        <Node componentID="297" descriptorID="componentNode297" x="-353" y="549"/>
         <Node componentID="120" descriptorID="componentNode120" x="19" y="231"/>
         <Node componentID="245" descriptorID="componentNode245" x="-134" y="618"/>
-        <Node componentID="275" descriptorID="componentNode275" x="-370" y="320"/>
-        <Node componentID="142" descriptorID="componentNode142" x="685" y="444"/>
-        <Node componentID="355" descriptorID="componentNode355" x="-491" y="655"/>
-        <Node componentID="2" descriptorID="componentNode2" x="-145" y="99"/>
-        <Node componentID="382" descriptorID="componentNode382" x="-642" y="212"/>
-        <Node componentID="357" descriptorID="componentNode357" x="-658" y="381"/>
         <Node componentID="160" descriptorID="componentNode160" x="380" y="634"/>
-        <Node componentID="269" descriptorID="componentNode269" x="620" y="219"/>
-        <Node componentID="27" descriptorID="componentNode27" x="422" y="119"/>
-        <Node componentID="309" descriptorID="componentNode309" x="-476" y="485"/>
         <Node componentID="63" descriptorID="componentNode63" x="78" y="106"/>
+        <Node componentID="357" descriptorID="componentNode357" x="-658" y="381"/>
+        <Node componentID="275" descriptorID="componentNode275" x="-370" y="320"/>
+        <Node componentID="365" descriptorID="componentNode365" x="-616" y="85"/>
+        <Node componentID="2" descriptorID="componentNode2" x="-145" y="99"/>
         <Node componentID="51" descriptorID="componentNode51" x="-131" y="497"/>
+        <Node componentID="355" descriptorID="componentNode355" x="-491" y="655"/>
+        <Node componentID="82" descriptorID="componentNode82" x="135" y="574"/>
+        <Node componentID="382" descriptorID="componentNode382" x="-642" y="212"/>
+        <Edge componentID="149" descriptorID="eventHandlerEdge149" x0="27" x1="58" x2="58" y0="169" y1="169" y2="225"/>
+        <Node componentID="317" descriptorID="componentNode317" x="-404" y="39"/>
+        <Node componentID="269" descriptorID="componentNode269" x="620" y="219"/>
     </FlowScene>
 </VisualDesign>

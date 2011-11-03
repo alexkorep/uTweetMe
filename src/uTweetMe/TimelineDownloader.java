@@ -18,11 +18,16 @@ public class TimelineDownloader implements Runnable {
    String m_timelineUrl;
    TimelineParsingStrategy m_parsingStrategy;
    
+   ///@brief if true, then no xAuth authorization is used to download this timeline.
+   ///       E.g. search timeline, which is available without authorization.
+   boolean m_publicTimeline = false;
+   
    TimelineDownloader(DownloadStatusCallback i_callback, String i_timelineUrl,
-           TimelineParsingStrategy i_parsingStrategy) {
+           TimelineParsingStrategy i_parsingStrategy, boolean i_publicTimeline) {
       m_callback = i_callback;
       m_timelineUrl = i_timelineUrl;
       m_parsingStrategy = i_parsingStrategy;
+      m_publicTimeline = i_publicTimeline;
       m_thread = new Thread(this);
       m_thread.start();
    }
@@ -33,7 +38,14 @@ public class TimelineDownloader implements Runnable {
       try {
          final String username = Settings.GetInstance().GetSettings().m_name;
          final String password = Settings.GetInstance().GetSettings().m_password;
-         response = HttpUtils.Request(m_timelineUrl, query, HttpConnection.GET, username, password, m_callback);
+          if (m_publicTimeline) {
+              response = HttpUtils.RequestPublicTimeline(m_timelineUrl, query,
+                      HttpConnection.GET, m_callback);
+
+          } else {
+              response = HttpUtils.Request(m_timelineUrl, query, null,
+                      HttpConnection.GET, username, password, m_callback);
+          }
 
          if (0 == response.length()) {
             // We got empty timeline

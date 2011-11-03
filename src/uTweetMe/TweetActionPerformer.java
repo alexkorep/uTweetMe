@@ -37,7 +37,7 @@ public class TweetActionPerformer implements Runnable {
    private void deleteTweet() {
       try {
          String url = c_deleteURL + String.valueOf(m_tweetId) + ".xml";
-         HttpUtils.Request(url, "", HttpConnection.POST,
+         HttpUtils.Request(url, "", null, HttpConnection.POST,
                  m_username, m_password, null);
 
          // Reporting about success

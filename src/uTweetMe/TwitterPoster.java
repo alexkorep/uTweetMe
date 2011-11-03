@@ -5,6 +5,7 @@
 
 package uTweetMe;
 
+import java.util.Hashtable;
 import javax.microedition.io.HttpConnection;
 
 /**
@@ -84,10 +85,19 @@ public class TwitterPoster implements Runnable {
 				update.m_text = shortenText;
 			}
 
+         Hashtable bodyParams = new Hashtable();
+         bodyParams.put("source", "utweetme");
+         if (0 != m_replyToId) {
+            bodyParams.put("in_reply_to_status_id", String.valueOf(m_replyToId));
+         }
+         bodyParams.put("status", update.m_text);
+         /*
          String query = "source=utweetme" +
             (0 != m_replyToId ? "&in_reply_to_status_id=" + String.valueOf(m_replyToId) : "") +
             "&status=" + HttpUtils.URLEncode(update.m_text);
-         HttpUtils.Request(c_updateURL, query, HttpConnection.POST, m_username, m_password, null);
+         */
+         HttpUtils.Request(c_updateURL, "", bodyParams,
+                 HttpConnection.POST, m_username, m_password, null);
 
          // Reporting about success
          //

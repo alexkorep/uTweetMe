@@ -1,5 +1,5 @@
-uTweetMe v. 1.2.10
-May 2, 2010
+uTweetMe v. 1.3 Alpha
+Sep 9, 2010
 http://utweetme.navetke.ru
 Powered by Twitter (http://twitter.com)
 If you have any questions or suggestion please tweet to @utweetme.
@@ -13,9 +13,7 @@ Contents:
 
 New in this version
 ~~~~~~~~~~~~~~~~~~~
-+ Warning added when posting message longer than 140 characters;
-+ Template text is now limited with 4000 characters;
-+ Some UI fixes.
++ xAuth authorization added.
 
 For the full version history please visit http://utweetme.navetke.ru.
 
@@ -28,3 +26,5 @@ Thanks
 Thanks to my wife Julia for encouraging me to this work.
 
 Thanks to Mark James (http://www.famfamfam.com/lab/icons/silk/) for the wonderfull set of icons which has been used in the application.
+
+Thanks to Ernandes (http://www.twapime.com/) for xAuth library.

@@ -3,7 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1">
         <file>
             <url>src/uTweetMe/HttpUtils.java</url>
-            <line>308</line>
+            <line>369</line>
         </file>
         <file>
             <url>src/uTweetMe/UI/TemplateWindowManager.java</url>
@@ -12,12 +12,17 @@
         <file>
             <url>src/uTweetMe/uTweetMeApp.java</url>
             <line>44</line>
-            <line>48</line>
+            <line>49</line>
         </file>
         <file>
             <url>src/uTweetMe/UTweetMIDlet.java</url>
-            <line>515</line>
-            <line>2701</line>
+            <line>519</line>
+            <line>665</line>
+            <line>2728</line>
+        </file>
+        <file>
+            <url>src/net/oauth/j2me/Consumer.java</url>
+            <line>158</line>
         </file>
         <file>
             <url>src/uTweeMe/UTweeMIDlet.java</url>
@@ -34,8 +39,8 @@
         </file>
         <file>
             <url>src/uTweetMe/DownloadableCollection.java</url>
-            <line>94</line>
-            <line>122</line>
+            <line>99</line>
+            <line>128</line>
         </file>
     </editor-bookmarks>
 </project-private>

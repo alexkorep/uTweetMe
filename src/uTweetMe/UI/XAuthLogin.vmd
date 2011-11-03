@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VisualDesign projectType="vmd-midp" version="1">
+    <Document version="2">
+        <Component componentID="0" typeID="C#Root">
+            <Property name="version" typeID="Pjava.lang.String" value="VMIDP-2.0"/>
+            <Component componentID="1" typeID="C#PointsCategory">
+                <Component componentID="2" typeID="C#Display"/>
+            </Component>
+            <Component componentID="3" typeID="C#ControllersCategory">
+                <Component componentID="4" typeID="C#CommandListener"/>
+                <Component componentID="5" typeID="C#ItemCommandListener"/>
+                <Component componentID="6" typeID="C#ItemStateListener"/>
+            </Component>
+            <Component componentID="7" typeID="C#DisplayablesCategory">
+                <Component componentID="11" typeID="Cjavax.microedition.lcdui.Form">
+                    <Property name="instanceName" typeID="Pjava.lang.String" value="VfrmOAuthUsername"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
+                    <Property name="commands" typeID="1C#CommandEventSource" value="A1:3_R15"/>
+                    <Property name="title" typeID="Pjava.lang.String" value="VUser Name"/>
+                    <Property name="commandListener" typeID="C#CommandListener" value="R4"/>
+                    <Property name="items" typeID="1Cjavax.microedition.lcdui.Item" value="A2:3_R193_R20"/>
+                    <Component componentID="15" typeID="C#CommandEventSource">
+                        <Property name="eventHandler" typeID="C#EventHandler" value="R28"/>
+                        <Property name="displayable" typeID="Cjavax.microedition.lcdui.Displayable" value="R11"/>
+                        <Property name="command" typeID="Cjavax.microedition.lcdui.Command" value="R14"/>
+                        <Component componentID="28" typeID="C#SwitchDisplayableEventHandler">
+                            <Property name="eventSource" typeID="C#EventSource" value="R15"/>
+                            <Property name="displayable" typeID="Cjavax.microedition.lcdui.Displayable" value="R22"/>
+                        </Component>
+                    </Component>
+                    <Component componentID="19" typeID="Cjavax.microedition.lcdui.TextField">
+                        <Property name="instanceName" typeID="Pjava.lang.String" value="VtxtUserName"/>
+                        <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
+                        <Property name="label" typeID="Pjava.lang.String" value="VUsername"/>
+                        <Property name="itemCommandListener" typeID="C#ItemCommandListener" value="R5"/>
+                        <Property name="text" typeID="Pjava.lang.String" value="V"/>
+                        <Property name="maxSize" typeID="Pint" value="V100"/>
+                        <Property name="constraints" typeID="Pint" value="V0"/>
+                    </Component>
+                    <Component componentID="20" typeID="Cjavax.microedition.lcdui.TextField">
+                        <Property name="instanceName" typeID="Pjava.lang.String" value="VtxtPassword"/>
+                        <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
+                        <Property name="label" typeID="Pjava.lang.String" value="VPassword"/>
+                        <Property name="itemCommandListener" typeID="C#ItemCommandListener" value="R5"/>
+                        <Property name="text" typeID="Pjava.lang.String" value="V"/>
+                        <Property name="maxSize" typeID="Pint" value="V50"/>
+                        <Property name="constraints" typeID="Pint" value="V0"/>
+                    </Component>
+                </Component>
+                <Component componentID="21" typeID="Cjavax.microedition.lcdui.Alert">
+                    <Property name="instanceName" typeID="Pjava.lang.String" value="ValertLoginSuccess"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
+                    <Property name="title" typeID="Pjava.lang.String" value="VLogin"/>
+                    <Property name="commandListener" typeID="C#CommandListener" value="R4"/>
+                    <Property name="string" typeID="Pjava.lang.String" value="VLogged in successfully."/>
+                    <Property name="timeout" typeID="Pint" value="V-2"/>
+                </Component>
+                <Component componentID="22" typeID="Corg.netbeans.microedition.lcdui.WaitScreen">
+                    <Property name="instanceName" typeID="Pjava.lang.String" value="VwaitScreenLogin"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
+                    <Property name="commands" typeID="1C#CommandEventSource" value="A2:3_R253_R26"/>
+                    <Property name="title" typeID="Pjava.lang.String" value="VLogin"/>
+                    <Property name="commandListener" typeID="C#CommandListener" value="R4"/>
+                    <Property name="text" typeID="Pjava.lang.String" value="VLogging in, please wait..."/>
+                    <Property name="task" typeID="Corg.netbeans.microedition.util.CancellableTask" value="R27"/>
+                    <Component componentID="25" typeID="C#WaitScreenSuccessCommandEventSource">
+                        <Property name="displayable" typeID="Cjavax.microedition.lcdui.Displayable" value="R22"/>
+                        <Property name="command" typeID="Cjavax.microedition.lcdui.Command" value="R23"/>
+                    </Component>
+                    <Component componentID="26" typeID="C#WaitScreenFailureCommandEventSource">
+                        <Property name="displayable" typeID="Cjavax.microedition.lcdui.Displayable" value="R22"/>
+                        <Property name="command" typeID="Cjavax.microedition.lcdui.Command" value="R24"/>
+                    </Component>
+                </Component>
+            </Component>
+            <Component componentID="8" typeID="C#CommandsCategory">
+                <Component componentID="12" typeID="Cjavax.microedition.lcdui.Command">
+                    <Property name="instanceName" typeID="Pjava.lang.String" value="VitemCommand"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
+                    <Property name="label" typeID="Pjava.lang.String" value="VItem"/>
+                    <Property name="type" typeID="Pint" value="V8"/>
+                </Component>
+                <Component componentID="14" typeID="Cjavax.microedition.lcdui.Command">
+                    <Property name="instanceName" typeID="Pjava.lang.String" value="VcmdLogin"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
+                    <Property name="label" typeID="Pjava.lang.String" value="VLogin"/>
+                    <Property name="longLabel" typeID="Pjava.lang.String" value="VLogin to Twitter"/>
+                    <Property name="type" typeID="Pint" value="V8"/>
+                </Component>
+                <Component componentID="23" typeID="C#WaitScreenSuccessCommand">
+                    <Property name="label" typeID="Pjava.lang.String" value="VSuccess"/>
+                    <Property name="type" typeID="Pint" value="V4"/>
+                    <Property name="priority" typeID="Pint" value="V0"/>
+                    <Property name="ordinary" typeID="Pboolean" value="Vfalse"/>
+                </Component>
+                <Component componentID="24" typeID="C#WaitScreenFailureCommand">
+                    <Property name="label" typeID="Pjava.lang.String" value="VFailure"/>
+                    <Property name="type" typeID="Pint" value="V4"/>
+                    <Property name="priority" typeID="Pint" value="V0"/>
+                    <Property name="ordinary" typeID="Pboolean" value="Vfalse"/>
+                </Component>
+            </Component>
+            <Component componentID="9" typeID="C#ResourcesCategory">
+                <Component componentID="27" typeID="Corg.netbeans.microedition.util.SimpleCancellableTask">
+                    <Property name="instanceName" typeID="Pjava.lang.String" value="VtaskLogin"/>
+                    <Property name="codeGenerated" typeID="Pboolean" value="Vtrue"/>
+                </Component>
+            </Component>
+            <Component componentID="10" typeID="C#DatabindingCategory"/>
+        </Component>
+    </Document>
+    <FlowScene version="1">
+        <Node componentID="21" descriptorID="componentNode21" x="343" y="131"/>
+        <Node componentID="11" descriptorID="componentNode11" x="50" y="50"/>
+        <Node componentID="22" descriptorID="componentNode22" x="108" y="246"/>
+    </FlowScene>
+</VisualDesign>
