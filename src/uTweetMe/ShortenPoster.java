@@ -5,6 +5,7 @@
 
 package uTweetMe;
 
+import java.util.Hashtable;
 import javax.microedition.io.HttpConnection;
 
 /**
@@ -19,9 +20,13 @@ public class ShortenPoster {
 	static String Post(TwitterUpdate update) throws Exception {
 
 		String id = "";
-		String query = "user_id=" + String.valueOf(update.m_author) +
-			"&text=" + HttpUtils.URLEncode(update.m_text) + "&version=1";
-		id = HttpUtils.Request(c_shortenPath + c_addURL, query,
+      Hashtable bodyParams = new Hashtable();
+      bodyParams.put("user_id", String.valueOf(update.m_author));
+      bodyParams.put("text", update.m_text);
+      bodyParams.put("version", "1");
+		//String query = "user_id=" + String.valueOf(update.m_author) +
+		//	"&text=" + HttpUtils.URLEncode(update.m_text) + "&version=1";
+		id = HttpUtils.Request(c_shortenPath + c_addURL, "", bodyParams,
 			HttpConnection.POST, "", "", null);
 
 		if (id.length() == 0)

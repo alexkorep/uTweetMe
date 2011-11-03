@@ -69,7 +69,8 @@ public class uTweetMeApp {
             "id",
             "created_at",
             "screen_name",
-            "in_reply_to_status_id"));
+            "in_reply_to_status_id"),
+         false);
       m_home.Load(c_draftsHomeStoreName);
 
       m_replies = new DownloadableCollection("Replies",
@@ -81,7 +82,8 @@ public class uTweetMeApp {
             "id",
             "created_at",
             "screen_name",
-            "in_reply_to_status_id"));
+            "in_reply_to_status_id"),
+         false);
       m_replies.Load(c_repliesStoreName);
 
       m_directInbox = new DownloadableCollection("Direct - Inbox",
@@ -93,7 +95,8 @@ public class uTweetMeApp {
             "id",
             "created_at",
             "screen_name",
-            ""));
+            ""),
+         false);
       m_directInbox.Load(c_directInboxStoreName);
 
       m_directSent = new DownloadableCollection("Direct - Sent",
@@ -105,7 +108,8 @@ public class uTweetMeApp {
             "id",
             "created_at",
             "screen_name",
-            ""));
+            ""),
+         false);
       m_directSent.Load(c_directSentStoreName);
 
       m_searchManager = new SearchManager(i_downloadCallback);
@@ -217,7 +221,7 @@ public class uTweetMeApp {
       return m_templates;
    }
 
-   boolean IsDownloading() {
+    boolean IsDownloading() {
       return m_home.Downloading() ||
          m_replies.Downloading() ||
          m_directInbox.Downloading() ||

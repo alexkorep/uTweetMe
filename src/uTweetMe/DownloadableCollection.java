@@ -35,6 +35,8 @@ public class DownloadableCollection extends UpdateCollection
     */
    private int m_insertAt = 0;
 
+   boolean m_publicTimeline = false;
+
    /**
     * @brief Ctor
     * @param i_name in, collection name as it will be displayed to user
@@ -42,7 +44,8 @@ public class DownloadableCollection extends UpdateCollection
    DownloadableCollection(String i_name,
          String i_url,
          DownloadableCollectionStatusCallback i_downloadCallback,
-         TimelineParsingStrategy i_parsingStrategy) {
+         TimelineParsingStrategy i_parsingStrategy,
+         boolean i_publicTimeline) {
       super();
       m_name = i_name;
       m_url = i_url;
@@ -50,6 +53,7 @@ public class DownloadableCollection extends UpdateCollection
       m_parsingStrategy = i_parsingStrategy;
       m_downloader = null;
       m_maxTweetCountAfterDownload = 0;
+      m_publicTimeline = i_publicTimeline;
    }
 
    boolean Downloading() {
@@ -85,7 +89,8 @@ public class DownloadableCollection extends UpdateCollection
          m_maxTweetCountAfterDownload =
             (fullPages + (GetItemCount()%Settings.c_pageSize == 0 ? 0 : 1))*Settings.c_pageSize;
       }
-      m_downloader = new TimelineDownloader(this, getDownloadUrlForNewUpdates(), m_parsingStrategy);
+      m_downloader = new TimelineDownloader(this, getDownloadUrlForNewUpdates(),
+              m_parsingStrategy, m_publicTimeline);
    }
 
    void DownloadEarlier() {
@@ -97,7 +102,8 @@ public class DownloadableCollection extends UpdateCollection
       final int pages = GetItemCount()/Settings.c_pageSize;
       m_maxTweetCountAfterDownload = 0;
       final String url = getDownloadUrlForPage(pages + 1);
-      m_downloader = new TimelineDownloader(this, url, m_parsingStrategy);
+      m_downloader = new TimelineDownloader(this, url, m_parsingStrategy,
+              m_publicTimeline);
    }
 
    /**

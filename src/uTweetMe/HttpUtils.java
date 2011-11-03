@@ -5,10 +5,16 @@
 
 package uTweetMe;
 
+import com.twitterapime.io.HttpRequest;
+import com.twitterapime.io.HttpResponse;
+import com.twitterapime.rest.UserAccountManager;
+import com.twitterapime.search.LimitExceededException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
+import java.util.Enumeration;
+import java.util.Hashtable;
 import javax.microedition.io.Connector;
 import javax.microedition.io.HttpConnection;
 
@@ -36,6 +42,10 @@ interface IDownloadProgress {
 public class HttpUtils 
 {
     private static final String c_userAgent = "uTweetMe";
+
+    /// @brief if true, then we are being logging in. In this case
+    ///        other threads need to wait until this flag gets to false
+    private static boolean m_inLoginProgress = false;
     
     /** 
      * Encodes string to URL represntation
@@ -154,6 +164,23 @@ public class HttpUtils
         return result.toString();
     }
 
+    private static boolean login(String i_username, String i_password) 
+            throws IOException, LimitExceededException {
+       LoginManager loginManager = LoginManager.GetInstance();
+       while (m_inLoginProgress) {
+         // wait until we get logged in
+       }
+
+       m_inLoginProgress = true;
+       if (loginManager.IsLoggedIn()) {
+          m_inLoginProgress = false;
+          return true;
+       }
+       boolean result = loginManager.Login(i_username, i_password);
+       m_inLoginProgress = false;
+       return result;
+    }
+
     
     /**
      * @param url
@@ -165,9 +192,66 @@ public class HttpUtils
      * @throws java.io.IOException
      * @throws java.lang.Exception
      */
-    static String Request(String url, String query, String requestMethod, 
+    static String Request(String url, String query, Hashtable bodyParameters,
+            String requestMethod,
             String i_username, String i_password, IDownloadProgress i_progressCallback)
             throws IOException, Exception 
+    {
+       if (0 != i_username.length()) {
+          if (!login(i_username, i_password)) {
+             throw new IOException("Cannot login: invalid username or password.");
+          }
+       }
+       
+       LoginManager loginManager = LoginManager.GetInstance();
+       UserAccountManager userAccountMngr = loginManager.GetUserAccountManager();
+       String fullUrl = url + (query.length() == 0 ? "" : "?" + query);
+       HttpRequest request = userAccountMngr.createRequest(fullUrl);
+       request.setMethod(requestMethod.equals("POST") ? HttpConnection.POST : HttpConnection.GET);
+
+       // Set body parameters
+       //
+       if (null != bodyParameters)
+       {
+          Enumeration keys = bodyParameters.keys();
+          String key;
+          while (keys.hasMoreElements()) {
+             key = (String) keys.nextElement();
+             request.setBodyParameter(
+                     key, (String) bodyParameters.get(key));
+          }
+       }
+
+       HttpResponse resp = request.send();
+       InputStream is = resp.getStream();
+
+       // todo: Replace all staff below till input stream to HttpRequest class
+       // usage and XAuthSigner to sign the request.
+
+        if (null != i_progressCallback)
+        {
+           i_progressCallback.OnProgress(0);
+        }
+
+        String response = getUpdates(is, i_progressCallback);
+
+        return response;
+    }
+
+
+        /**
+     * @param url
+     * @param query
+     * @param requestMethod
+     * @param i_username
+     * @param i_password
+     * @return
+     * @throws java.io.IOException
+     * @throws java.lang.Exception
+     */
+    static String RequestPublicTimeline(String url, String query, String requestMethod,
+            IDownloadProgress i_progressCallback)
+            throws IOException, Exception
     {
         String response = "";
         int status = -1;
@@ -186,52 +270,30 @@ public class HttpUtils
            i_progressCallback.OnProgress(0);
         }
 
-        while (con == null) 
+        while (con == null)
         {
-            //Log.setState("connecting");
             con = (HttpConnection)Connector.open(url);
-            //Log.setState("connected");
-            //Log.verbose("opened connection to "+url);
             con.setRequestMethod(requestMethod);
-            if (i_username != null && i_password != null && i_username.length() > 0) 
-            {
-                String userPass = i_username + ":" + i_password;
-                userPass = Base64Encode(userPass.getBytes());
-                con.setRequestProperty("Authorization", "Basic " + userPass);
-            }
             con.setRequestProperty("User-Agent", c_userAgent);
             con.setRequestProperty("Connection", "close");
-            /*
-            if (!Device.isNokia()) {
-            con.setRequestProperty("Host", con.getHost()+":"+con.getPort());
-            }
-            */
             con.setRequestProperty("Accept", "*/*");
             con.setRequestProperty("X-Twitter-Client", "uTweetMe");
             con.setRequestProperty("X-Twitter-Client-Version", "");
             con.setRequestProperty("X-Twitter-Client-URL", "http://utweetme.navetke.ru");
 
-            if (query.length() > 0) 
+            if (query.length() > 0)
             {
                 con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
                 con.setRequestProperty("Content-Length", "" + query.length());
                 os = con.openOutputStream();
-                //Log.verbose("opened output stream");
                 os.write(query.getBytes());
-                //Log.verbose("sent query "+query);
                 os.close();
                 os = null;
-                //Log.verbose("closed output stream");
             }
 
-            //Log.setState("sending request");
             status = con.getResponseCode();
             message = con.getResponseMessage();
-            //Log.setState("received response");
-            //Log.info(status+" "+message);
-            //Log.debug("user-agent "+con.getRequestProperty("User-Agent"));
-            //Log.verbose("response code "+status+" "+message);
-            switch (status) 
+            switch (status)
             {
                 case HttpConnection.HTTP_OK:
                 case HttpConnection.HTTP_NOT_MODIFIED:
@@ -239,7 +301,7 @@ public class HttpUtils
                 case HttpConnection.HTTP_MOVED_TEMP:
                 case HttpConnection.HTTP_TEMP_REDIRECT:
                 case HttpConnection.HTTP_MOVED_PERM:
-                    if (depth > 2) 
+                    if (depth > 2)
                     {
                         throw new IOException("Too many redirect");
                     }
@@ -262,34 +324,29 @@ public class HttpUtils
         }
 
         is = con.openInputStream();
-        //Log.setState("receiving i_bufToEncode");
-        //Log.verbose("opened input stream");
-        
-        if (!redirected) 
+
+        if (!redirected)
         {
-            response = getUpdates(con, is, os, i_progressCallback);
-        } 
-        else 
+            response = getUpdates(is, i_progressCallback);
+        }
+        else
         {
-            try 
+            try
             {
-                if (con != null) 
+                if (con != null)
                 {
                     con.close();
-                    //Log.verbose("closed connection");
                 }
-                if (os != null) 
+                if (os != null)
                 {
                     os.close();
-                    //.verbose("closed output stream");
                 }
-                if (is != null) 
+                if (is != null)
                 {
                     is.close();
-                    //Log.verbose("closed input stream");
                 }
-            } 
-            catch (IOException ioe) 
+            }
+            catch (IOException ioe)
             {
                 throw ioe;
             }
@@ -306,52 +363,20 @@ public class HttpUtils
      * @param i_progressCallback in, callback to notify about progress,
      *        might be null!
      */
-    private static String getUpdates(HttpConnection con, InputStream is,
-           OutputStream os, IDownloadProgress i_progressCallback) throws IOException {
+    private static String getUpdates(InputStream is, IDownloadProgress i_progressCallback) throws IOException {
       StringBuffer stb = new StringBuffer();
       int ch = 0;
-      final int c_updateEachNBytes = 500; // Update progress after downloading this number of bytes
       try {
-         int n = (int) con.getLength();
-         //Log.info("Size: "+n);
-         //Log.verbose("reading response");
-         if (n != -1) {
-            for (int i = 0; i < n; i++) {
-               if ((ch = is.read()) != -1) {
-                  stb.append((char) ch);
-                  //Log.setProgress(i*100/n);
-                  if (null != i_progressCallback &&
-                          (0 == i % c_updateEachNBytes)) {
-                     final boolean interrupt = i_progressCallback.OnProgress(i * 100 / n);
-                     // Exit if downloading must be cancelled.
-                     if (interrupt) {
-                        i_progressCallback.OnDownloadFinished();
-                        return "";
-                     }
-                  }
-               }
-            }
-         } else {
-            while ((ch = is.read()) != -1) {
-               n = is.available();
-               stb.append((char) ch);
-            }
+         while ((ch = is.read()) != -1) {
+            stb.append((char) ch);
          }
       } catch (IOException ioe) {
          throw ioe;
       } finally {
          try {
-            if (os != null) {
-               os.close();
-            //Log.verbose("closed output stream");
-            }
             if (is != null) {
                is.close();
             //Log.verbose("closed input stream");
-            }
-            if (con != null) {
-               con.close();
-            //Log.verbose("closed connection");
             }
          } catch (IOException ioe) {
             throw ioe;
